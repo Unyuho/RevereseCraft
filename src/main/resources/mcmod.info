@@ -1,0 +1,16 @@
+[
+{
+  "modid": "reversecraft",
+  "name": "ReverseCraft",
+  "description": "Unyuho's MOD.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "http://forum.minecraftuser.jp/viewtopic.php?f=13&t=3629",
+  "updateUrl": "http://forum.minecraftuser.jp/viewtopic.php?f=13&t=3629",
+  "authorList": ["Unyuho"],
+  "credits": "By Unyuho",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
