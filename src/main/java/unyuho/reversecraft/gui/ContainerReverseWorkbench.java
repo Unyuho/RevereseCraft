@@ -211,8 +211,6 @@ public class ContainerReverseWorkbench extends Container
 
 		reversestack.grow((-1)*resultstack.getCount() * Size);
 
-		System.out.println("reversestack.getCount():" + reversestack.getCount());
-
 		if (reversestack.getCount() < 1)
 		{
 			reversestack = ItemStack.EMPTY;
@@ -254,9 +252,6 @@ public class ContainerReverseWorkbench extends Container
 			currentIndex = 0;
 			IReverseRecipe irecipe = (IReverseRecipe)recipesR.get(currentIndex);
 			if(!world.isRemote) craftMatrix.setInventory(irecipe);
-
-			System.out.println("recipesize:" + recipesize + ", currentIndex:" + currentIndex + ", ");
-
 		}
 		else
 		{

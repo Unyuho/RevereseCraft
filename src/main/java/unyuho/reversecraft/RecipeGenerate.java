@@ -39,8 +39,6 @@ public class RecipeGenerate
 		ArrayList<IRecipe> recipeList = findMatchingRecipes(itemstack);
 		Iterator<IRecipe> iterator = recipeList.iterator();
 
-		System.out.println("start:"+recipeList.size());
-
 		IReverseRecipe reverseRecipe = null;
 
 		while (iterator.hasNext())
@@ -78,12 +76,7 @@ public class RecipeGenerate
 
 			if(reverseRecipe == null)
 			{
-
 				reverseRecipe = generateModShapeless(recipe);
-
-				System.out.println("else:"+recipe.getRecipeOutput().getDisplayName() +" , reverseRecipe:" + (reverseRecipe != null));
-
-				ModRecipeReflection.printClass(recipe);
 			}
 
 			//増殖レシピ以外であれば登録
@@ -94,28 +87,6 @@ public class RecipeGenerate
         }
 
 		return reverseRecipeList;
-
-/*
-		System.out.println("analyze : " + reverseRecipes.size());
-
-		//増殖レシピ除外
-		int size = reverseRecipes.size();
-
-		for (int i = size - 1; i >= 0; i--)
-		{
-			IReverseRecipes irecipe = (IReverseRecipes)reverseRecipes.get(i);
-			ItemStack recipeOutput = irecipe.getResultRecipe();
-			ItemStack recipeItems[] = irecipe.getCraftingRecipe();
-			List list = new ArrayList();
-
-			if (isMultiply(recipeOutput.copy(), recipeItems.clone(), list))
-			{
-				reverseRecipes.remove(i);
-			}
-		}
-
-		System.out.println("fin : " + reverseRecipes.size());
-*/
 	}
 
 
@@ -176,7 +147,6 @@ public class RecipeGenerate
     	//レシピ一覧を返す処理
 		if(ingredients.size() == 0)
 		{
-			System.out.println("!?");
 			return null;
 		}
 
@@ -201,7 +171,6 @@ public class RecipeGenerate
         		equalFlg = false;
         		for(int i = 0; i < itemStacks.length; i++)
         		{
-        			System.out.println("itemStacks[" + i + "] = " + itemStacks[i].getDisplayName());
             		if(!itemStacks[i].isItemEqual(cacheItemStacks[i]))
             		{
             			equalFlg = true;
@@ -212,7 +181,6 @@ public class RecipeGenerate
         	}
         	if(equalFlg)
         	{
-        		System.out.println((itemStacks.length > 0 ? itemStacks[0].getDisplayName() : "Null"));
         		cacheIndex.add(ingredient);
         		cache.put(cacheIndex.size()-1, ingredient);
         	}
@@ -252,7 +220,6 @@ public class RecipeGenerate
         		j++;
         	}
 
-        	System.out.println(j);
     		ingredientIndex[i] = j;
     	}
 
@@ -270,14 +237,11 @@ public class RecipeGenerate
 			{
 				maxIndexes[0] = maxIndexes[i] > 0 ? maxIndexes[i] : 0;
 			}
-			System.out.println("indexes["+i+"]:"+ indexes[i] + "maxIndexes["+i+"] : " + maxIndexes[i]);
     	}
 
 		//レシピ組み合わせ
 		int maxIndex = cacheIndex.size() - 1;
 		List oreRecipeList = new ArrayList<IReverseRecipe>();
-
-		System.out.println("indexes[0] < maxIndexes[0] : " + (indexes[0] < maxIndexes[0]));
 
 		while(indexes[0] <= maxIndexes[0])
 		{
@@ -294,15 +258,6 @@ public class RecipeGenerate
         			}
         		}
 			}
-
-
-			String s = "";
-			for(ItemStack itemstack : newRecipes)
-			{
-				s += (itemstack != null ? itemstack.getDisplayName() : "Null") + ", ";
-			}
-			System.out.println("s : " + s);
-
 
 			//レシピをあれこれする処理
 			ReverseRecipe reverseRecipe = generateReverseRecipe(recipeWidth, recipeHeight, newRecipes, recipeOutput, irecipe);
@@ -341,8 +296,6 @@ public class RecipeGenerate
 	private static IReverseRecipe generateShapedRecipe(ShapedRecipes recipe)
 	{
 		ItemStack recipeOutput = recipe.getRecipeOutput();
-
-		ModRecipeReflection.printClass(recipeOutput);
 
 		//レシピクラスから情報取得
 		int recipeWidth = recipe.recipeWidth;
@@ -467,12 +420,6 @@ public class RecipeGenerate
 				continue;
 			}
 
-			if(ReverseCraft.allrecipe)
-			{
-				recipeList.add(recipe);
-				continue;
-			}
-
 			ItemStack outputItemStack = recipe.getRecipeOutput();
 			if(outputItemStack != null)
 			{
@@ -578,8 +525,6 @@ public class RecipeGenerate
 
 		try
 		{
-			ModRecipeReflection.printClass(recipe);
-
 			int recipeWidth;
 			int recipeHeight;
 			int len = recipe.getIngredients().size();

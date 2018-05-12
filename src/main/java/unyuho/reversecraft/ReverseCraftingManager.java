@@ -70,36 +70,13 @@ public class ReverseCraftingManager
 	{
 		int itemID = getItemID(itemstack);
 		if(itemID == -1) return new ArrayList();
-/*
-		int damage = itemstack.getItemDamage();
 
-		Map<Integer, List<IReverseRecipe>> damageRecipeMap;
-
-		if(reverseRecipeMap.containsKey(itemID))
-		{
-			damageRecipeMap = reverseRecipeMap.get(itemID);
-			if(damageRecipeMap.containsKey(damage))
-			{
-				return damageRecipeMap.get(damage);
-			}
-		}
-		else
-		{
-			damageRecipeMap = new HashMap();
-		}
-
-		List<IReverseRecipe> reverseRecipeList = RecipeGenerate.generateRecipesList(itemstack);
-		damageRecipeMap.put(damage, reverseRecipeList);
-		reverseRecipeMap.put(itemID, damageRecipeMap);
-*/
 		List<IReverseRecipe> reverseRecipeList;
 		List<IReverseRecipe> matchRecipeList = new ArrayList<IReverseRecipe>();
-
+/*
 		if(reverseRecipeMap.containsKey(itemID))
 		{
 			reverseRecipeList = reverseRecipeMap.get(itemID);
-			System.out.println("itemID:"+itemID + ", " + reverseRecipeList.size());
-
 			reverseRecipeList = RecipeGenerate.generateRecipesList(itemstack);
 		}
 		else
@@ -107,6 +84,9 @@ public class ReverseCraftingManager
 			reverseRecipeList = RecipeGenerate.generateRecipesList(itemstack);
 			reverseRecipeMap.put(itemID, reverseRecipeList);
 		}
+*/
+		reverseRecipeList = RecipeGenerate.generateRecipesList(itemstack);
+
 
 		for(IReverseRecipe reverseRecipe : reverseRecipeList)
 		{
@@ -127,8 +107,6 @@ public class ReverseCraftingManager
      */
 	public boolean matches(ItemStack craftItemStack)
 	{
-		System.out.println("************************* matches start *************************");
-
 		List<IReverseRecipe> reverseRecipeList = getReverseRecipeList(craftItemStack);
 
 		for (int k = 0; k < reverseRecipeList.size(); k++)
@@ -137,15 +115,9 @@ public class ReverseCraftingManager
 
 			if (irecipe.matches(craftItemStack))
 			{
-				System.out.println("************************* matches true end *************************");
 				return true;
 			}
 		}
-
-
-		//ModRecipeReflection.printClass(craftItemStack);
-		//ModRecipeReflection.printClass(craftItemStack.getItem());
-		System.out.println("************************* matches false end *************************");
 
 		return false;
 	}

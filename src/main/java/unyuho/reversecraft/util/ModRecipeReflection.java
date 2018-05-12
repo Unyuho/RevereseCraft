@@ -305,7 +305,7 @@ public class ModRecipeReflection
 
 		sb.append("}");
 
-	//	System.out.println("\n" + sb.toString());
+		System.out.println("\n" + sb.toString());
 	}
 
 	private static void printFields(Class cls, Object obj, StringBuilder sb)

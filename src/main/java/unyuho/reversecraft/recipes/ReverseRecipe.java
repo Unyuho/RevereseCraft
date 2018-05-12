@@ -54,17 +54,10 @@ public class ReverseRecipe implements IReverseRecipe
 	{
 		if(!enabled)
 		{
-		//	return false;
+			return false;
 		}
 
 		ItemStack checkStack = getResultRecipe();
-
-		if(itemstack.getDisplayName().equals(checkStack.getDisplayName())){
-			System.out.println(itemstack.getDisplayName() + " : " + checkStack.getDisplayName());
-		}
-
-		System.out.println(itemstack.getDisplayName() + " : " + checkStack.getDisplayName());
-
 
 		if(itemstack.getCount() < checkStack.getCount())
 		{

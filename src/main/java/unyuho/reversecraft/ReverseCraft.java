@@ -35,9 +35,9 @@ public class ReverseCraft{
 
     public static final String MOD_ID = "reversecraft";
     public static final String MOD_NAME = "Reversecraft";
-    public static final String MOD_VERSION = "0.0.1";
+    public static final String MOD_VERSION = "5.0.0";
 
-    public static final String MOD_DEPENDENCIES = "required-after:forge@[1.11-13.19.0.2130,)";
+    public static final String MOD_DEPENDENCIES = "required-after:forge@[1.12.2-14.23.1.2555,)";
 
     public static final String MOD_ACCEPTED_MC_VERSIONS = "[1.12.2]";
 
@@ -50,7 +50,6 @@ public class ReverseCraft{
 	public static FMLEventChannel channel;
 
 
-	public static boolean allrecipe = false;
 	public static boolean allprint = false;
 
 
@@ -78,7 +77,7 @@ public class ReverseCraft{
     {
         public static Block reversecraft_block = new BlockReverseWorkbench()
                 .setRegistryName(MOD_ID, "reversecraft_block")		/*登録名の設定*/
-                .setCreativeTab(CreativeTabs.BUILDING_BLOCKS)		/*クリエイティブタブの選択*/
+                .setCreativeTab(CreativeTabs.DECORATIONS)			/*クリエイティブタブの選択*/
                 .setUnlocalizedName("reverseworkbench")				/*システム名の設定*/
                 .setHardness(1.5F)									/*硬さ*/
                 .setResistance(1.0F);								/*爆破耐性*/
@@ -144,8 +143,7 @@ public class ReverseCraft{
 		try
 		{
 			cfg.load();
-			allrecipe = cfg.getBoolean("allrecipe", "Debug", false, "debug mode");
-			allprint = cfg.getBoolean("allprint", "Debug", true, "debug mode");
+			allprint = cfg.getBoolean("allprint", "Debug", false, "debug mode");
 		}
 		catch (Exception e)
 		{

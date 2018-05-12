@@ -18,10 +18,6 @@ public class ReverseOreRecipe implements IReverseRecipe
 	@Override
 	public boolean matches(ItemStack itemstack)
 	{
-
-		System.out.println("matches : " + itemstack.getDisplayName());
-
-
 		for(IReverseRecipe recipe : recipelist)
 		{
 			if(recipe.matches(itemstack))
