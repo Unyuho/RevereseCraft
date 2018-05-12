@@ -25,7 +25,7 @@ public class BlockReverseWorkbench extends BlockWorkbench
         else
         {
             //playerIn.displayGui(new BlockWorkbench.InterfaceCraftingTable(worldIn, pos));
-            //playerIn.openGui(ReverseCraft.instance, ReverseCraft.getGuiId(), worldIn, pos.getX(), pos.getY(), pos.getZ());
+            playerIn.openGui(ReverseCraft.instance, ReverseCraft.getGuiId(), worldIn, pos.getX(), pos.getY(), pos.getZ());
             return true;
         }
     }
