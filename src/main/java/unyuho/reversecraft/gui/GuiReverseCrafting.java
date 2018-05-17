@@ -122,10 +122,20 @@ public class GuiReverseCrafting extends GuiContainer
 	}
 
 	@Override
+	public void drawScreen(int mouseX, int mouseY, float partialTicks)
+	{
+		super.drawScreen(mouseX, mouseY, partialTicks);
+		this.renderHoveredToolTip(mouseX, mouseY);
+	}
+
+	@Override
 	public void drawGuiContainerForegroundLayer(int par1, int par2)
 	{
 		super.drawGuiContainerForegroundLayer(par1, par2);
 		fontRenderer.drawString("ReverseCraft", 28, 6, 0x404040);
+
+
+
 		//fontRenderer.drawString(StatCollector.translateToLocal("container.inventory"), 8, (ySize - 96) + 2, 0x404040);
 		//fontRenderer.drawString(strMode, 118, 20, 0x404040);
 	}
