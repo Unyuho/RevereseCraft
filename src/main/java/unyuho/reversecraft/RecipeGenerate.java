@@ -233,10 +233,16 @@ public class RecipeGenerate
 
 			indexes[i] = 0;
 			maxIndexes[i] = itemstacks.length - 1;
+			if(maxIndexes[0] == -1)
+			{
+				maxIndexes[0] = 0;
+			}
+			/*
 			if(maxIndexes[i] > -1)
 			{
 				maxIndexes[0] = maxIndexes[i] > 0 ? maxIndexes[i] : 0;
 			}
+			*/
     	}
 
 		//レシピ組み合わせ
@@ -251,6 +257,7 @@ public class RecipeGenerate
         		Ingredient ingredient = cache.get(ingredientIndex[i]);
         		ItemStack[] itemstacks = ingredient.getMatchingStacks();
         		if(itemstacks.length > 0){
+        			System.out.println("newRecipes["+i+"] = itemstacks[indexes["+ingredientIndex[i]+"]];");
         			newRecipes[i] = itemstacks[indexes[ingredientIndex[i]]];
         			if(newRecipes[i] == null)
         			{
